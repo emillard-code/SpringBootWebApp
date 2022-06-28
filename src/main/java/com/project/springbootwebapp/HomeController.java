@@ -3,6 +3,7 @@ package com.project.springbootwebapp;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,6 +55,28 @@ public class HomeController {
         session.setAttribute("username", name);
 
         return "newhome";
+
+    }
+
+    // Sample of how to pass data into endpoint.
+    // http://localhost:8080/home4?name=George
+    @RequestMapping("home4")
+    public String home4(String name, HttpSession session) {
+
+        session.setAttribute("username", name);
+
+        return "newhome0";
+
+    }
+
+    // @RequestParam allows you to set the parameter name that Sprint Boot looks for in the URL.
+    // Using @RequestParam allows you to set whatever variable name you want in the controller method.
+    @RequestMapping("home5")
+    public String home5(@RequestParam("name") String myName, HttpSession session) {
+
+        session.setAttribute("username", myName);
+
+        return "newhome0";
 
     }
 
