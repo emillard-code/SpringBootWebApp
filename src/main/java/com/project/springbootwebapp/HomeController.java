@@ -2,9 +2,11 @@ package com.project.springbootwebapp;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
@@ -23,6 +25,7 @@ public class HomeController {
     }
 
     // SpringBoot seems to look for html files in "resources/static".
+    // (Assuming the default directory is not changed in application.properties)
     @GetMapping("home1")
     public String home1() {
 
@@ -31,10 +34,25 @@ public class HomeController {
     }
 
     // SpringBoot seems to always look for .jsp files in the "webapp" folder.
+    // (Assuming the default directory is not changed in application.properties)
     @GetMapping("home2")
     public String home2() {
 
-        return "home.jsp";
+        return "home";
+
+    }
+
+    @RequestMapping("home3")
+    public String home3(HttpServletRequest req) {
+
+        // Sample of how to pass data into endpoint.
+        // http://localhost:8080/home3?name=George
+        String name = req.getParameter("name");
+
+        HttpSession session = req.getSession();
+        session.setAttribute("username", name);
+
+        return "newhome";
 
     }
 
