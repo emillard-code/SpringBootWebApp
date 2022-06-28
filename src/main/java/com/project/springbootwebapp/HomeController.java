@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -69,7 +70,7 @@ public class HomeController {
 
     }
 
-    // @RequestParam allows you to set the parameter name that Sprint Boot looks for in the URL.
+    // @RequestParam allows you to set the parameter name that Spring Boot looks for in the URL.
     // Using @RequestParam allows you to set whatever variable name you want in the controller method.
     @RequestMapping("home5")
     public String home5(@RequestParam("name") String myName, HttpSession session) {
@@ -77,6 +78,17 @@ public class HomeController {
         session.setAttribute("username", myName);
 
         return "newhome0";
+
+    }
+
+    @RequestMapping("home6")
+    public ModelAndView home6(@RequestParam("name") String myName) {
+
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("name", myName);
+        mv.setViewName("newhome1");
+
+        return mv;
 
     }
 
