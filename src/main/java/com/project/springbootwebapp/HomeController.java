@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -43,7 +44,7 @@ public class HomeController {
     }
 
     @RequestMapping("home3")
-    public String home3(HttpServletRequest req) {
+    public String home3(HttpServletRequest req, HttpServletResponse res) {
 
         // Sample of how to pass data into endpoint.
         // http://localhost:8080/home3?name=George
