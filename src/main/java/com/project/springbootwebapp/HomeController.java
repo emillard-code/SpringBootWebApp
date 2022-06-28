@@ -85,8 +85,21 @@ public class HomeController {
     public ModelAndView home6(@RequestParam("name") String myName) {
 
         ModelAndView mv = new ModelAndView();
-        mv.addObject("name", myName);
+        mv.addObject("username", myName);
         mv.setViewName("newhome1");
+
+        return mv;
+
+    }
+
+    // Sample of how to pass data into endpoint.
+    // http://localhost:8080/home7?id=1&name=George&language=Java
+    @RequestMapping("home7")
+    public ModelAndView home7(Programmer programmer) {
+
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("object", programmer);
+        mv.setViewName("newhome2");
 
         return mv;
 
