@@ -72,6 +72,7 @@ public class HomeController {
 
     // @RequestParam allows you to set the parameter name that Spring Boot looks for in the URL.
     // Using @RequestParam allows you to set whatever variable name you want in the controller method.
+    // http://localhost:8080/home4?name=George
     @RequestMapping("home5")
     public String home5(@RequestParam("name") String myName, HttpSession session) {
 
@@ -81,6 +82,7 @@ public class HomeController {
 
     }
 
+    // http://localhost:8080/home4?name=George
     @RequestMapping("home6")
     public ModelAndView home6(@RequestParam("name") String myName) {
 
